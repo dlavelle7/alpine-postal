@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from postal.parser import parse_address
 
 
@@ -15,3 +17,7 @@ def test_postal():
         ('ec2a 4rh', 'postcode'), ('united kingdom', 'country')
     ]
     assert result == expected, "Postal did not parse test address correctly"
+
+
+if __name__ == "__main__":
+    test_postal()
