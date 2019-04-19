@@ -6,14 +6,8 @@ RUN apk update && apk add python3 py3-pip python3-dev curl autoconf automake \
 
 RUN mkdir /postal /datadir /postal_tests
 
-WORKDIR /postal
-
-### Download, Compile & Install libpostal ###
-RUN git clone https://github.com/openvenues/libpostal
-
-# xargs in alpine doesn't have the `-P` option, so remove and use just one proc
-# https://github.com/openvenues/libpostal/issues/319
-RUN sed -i 's/ -P $NUM_WORKERS//' libpostal/src/libpostal_data.in
+# Copy over libpostal submodule code
+COPY libpostal/ /postal/libpostal/
 
 WORKDIR /postal/libpostal
 
