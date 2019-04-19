@@ -7,11 +7,13 @@ See pypostal NLP repo: https://github.com/openvenues/pypostal
 
 DockerHub repo: https://hub.docker.com/r/lasmell/alpine-postal
 
-The libpostal repo is a submodule of this repo. If you want to pull the updated
-version of the repo do:
+The libpostal repo is a submodule of this repo.
+
+## Local Installation
 
 ```
-cd libpostal
-git fetch
-git merge origin/master
+git clone git@github.com:dlavelle7/alpine-postal.git
+cd alpine-postal
+git submodule init
+git submodule update
 ```
