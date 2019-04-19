@@ -2,7 +2,7 @@ FROM alpine:3.6
 
 # Install libpostal dependencies
 RUN apk update && apk add python3 py3-pip python3-dev curl autoconf automake \
-        libtool pkgconfig git make gcc g++
+        libtool pkgconfig make g++
 
 RUN mkdir /postal /datadir /postal_tests
 
@@ -18,12 +18,9 @@ RUN sed -i 's/ -P $NUM_WORKERS//' libpostal/src/libpostal_data.in
 WORKDIR /postal/libpostal
 
 # Install postal
-RUN ./bootstrap.sh 
-RUN ./configure --datadir=/datadir 
-RUN make 
-RUN make install 
+RUN ./bootstrap.sh && ./configure --datadir=/datadir && make && make install
 
-### Install python postal library ###
+#### Install python postal library ###
 RUN pip3 install --upgrade pip && pip3 install postal==1.1.7
 
 # Copy test code to container
