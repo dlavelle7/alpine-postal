@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # clone python postal repo
-apk add git
+apk add git python3 py3-pip python3-dev
 cd /postal_tests
 git clone https://github.com/openvenues/pypostal.git
 
